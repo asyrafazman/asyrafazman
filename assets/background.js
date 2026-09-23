@@ -130,13 +130,18 @@
   const nav = document.querySelector('.home-tab-nav');
   if (nav) {
     nav.id = 'portfolio-navigation';
-    const navHeader = document.createElement('div');
-    navHeader.className = 'aa-nav-header';
-    navHeader.innerHTML = '<span class="aa-nav-mark">Asy</span><span><strong>Asyraf Azman</strong><small>Software Developer</small></span>';
-    nav.prepend(navHeader);
+    const navParent = nav.parentNode;
+    const navNextSibling = nav.nextSibling;
+    const syncNavPlacement = () => {
+      if (matchMedia('(max-width: 767px)').matches) {
+        if (nav.parentNode !== document.body) document.body.append(nav);
+      } else if (nav.parentNode !== navParent) {
+        navParent.insertBefore(nav, navNextSibling);
+      }
+    };
     const navFooter = document.createElement('p');
     navFooter.className = 'aa-nav-footer';
-    navFooter.textContent = 'Explore portfolio';
+    // navFooter.textContent = 'Explore portfolio';
     nav.append(navFooter);
     const toggle = document.createElement('button');
     toggle.className = 'aa-nav-toggle';
@@ -180,7 +185,11 @@
         toggle.focus();
       }
     });
-    addEventListener('resize', () => { if (!matchMedia('(max-width: 767px)').matches) setOpen(false); });
+    addEventListener('resize', () => {
+      syncNavPlacement();
+      if (!matchMedia('(max-width: 767px)').matches) setOpen(false);
+    });
+    syncNavPlacement();
     setOpen(false);
   }
 })();

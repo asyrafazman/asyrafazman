@@ -104,7 +104,7 @@
 @media (max-width: 767px) {
   .home-tab-nav {
     width: min(82vw, 280px);
-    padding: 82px 18px 22px;
+    padding: 76px 18px 22px;
     box-sizing: border-box;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -496,7 +496,7 @@
 @media (max-width: 767px) {
   .home-tab-nav {
     width: min(82vw, 280px);
-    padding: 82px 18px 22px;
+    padding: 76px 18px 22px;
     box-sizing: border-box;
     overflow-y: auto;
     overscroll-behavior: contain;
